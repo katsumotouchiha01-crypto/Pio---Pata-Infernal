@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PÍO PATA INFERNAL - Horarios de Presentación y Ubicación</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            spooky: ['Creepster', 'cursive'],
+            metal: ['Metal Mania', 'cursive'],
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            parchment: '#e5e2d9',
+            parchmentDark: '#d1cdc0',
+            flyerInk: '#111113',
+            blood: '#8b0000',
+            bloodBright: '#cc0000',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #d8d4c9;
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(0, 0, 0, 0.08) 0%, transparent 70%),
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,0.02) 40px, rgba(0,0,0,0.02) 41px);
+      color: #111113;
+    }
+
+    .flyer-title-main {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-shadow: 2px 2px 0px #b5b0a1, 4px 4px 0px rgba(0,0,0,0.8);
+    }
+
+    .flyer-infernal {
+      font-family: 'Creepster', cursive;
+      color: #b30000;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .time-slot-card {
+      background-color: #f7f5f0;
+      border: 2px solid #222225;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .time-slot-card:hover {
+      border-color: #b30000;
+      transform: translateX(4px);
+    }
+
+    .time-slot-special {
+      background: linear-gradient(90deg, rgba(179, 0, 0, 0.12) 0%, #f7f5f0 100%);
+      border: 2px solid #b30000;
+    }
+
+    .grunge-btn {
+      transition: all 0.2s ease-in-out;
+    }
+    .grunge-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #d8d4c9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased pb-12 selection:bg-blood selection:text-white">
+
+  <!-- HEADER / FLYER BANNER -->
+  <header class="w-full py-8 px-4 text-center relative overflow-hidden border-b-4 border-flyerInk bg-[#111113] text-[#e5e2d9]">
+    <div class="max-w-4xl mx-auto flex flex-col items-center">
+      
+      <!-- Subtitle badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-zinc-300 font-semibold text-xs tracking-widest uppercase mb-3 shadow-md">
+        <i class="fa-solid fa-skull text-bloodBright"></i> Sábado 31 de Octubre • El Relajo del Tayta <i class="fa-solid fa-skull text-bloodBright"></i>
+      </div>
+
+      <!-- Main Title -->
+      <div class="relative inline-block my-2">
+        <h1 class="flyer-title-main text-5xl sm:text-7xl md:text-8xl text-zinc-100 uppercase tracking-widest">
+          PÍO PATA
+        </h1>
+        <div class="absolute -bottom-4 right-2 sm:right-6 md:right-10 rotate-[-6deg]">
+          <span class="flyer-infernal text-4xl sm:text-6xl md:text-7xl tracking-normal">
+            infernal
+          </span>
+        </div>
+      </div>
+
+      <!-- Banner Box -->
+      <div class="mt-6 px-6 py-2.5 rounded-xl bg-zinc-900 border-2 border-zinc-700 text-zinc-200 font-metal text-lg sm:text-2xl tracking-wider uppercase flex items-center justify-center gap-3 shadow-xl">
+        <i class="fa-solid fa-clock text-bloodBright"></i> ORDEN Y HORARIOS DE PRESENTACIÓN <i class="fa-solid fa-guitar text-bloodBright"></i>
+      </div>
+
+      <p class="text-xs sm:text-sm text-zinc-400 mt-3 max-w-xl">
+        ⚡ Arrancamos puntual a las 19:00 • 30 min por banda • Sorteo en medio del evento
+      </p>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex-1 w-full">
+    
+    <!-- CONTROLS -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6 bg-[#1f1f23] p-4 rounded-2xl border-2 border-flyerInk shadow-lg text-white">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-fire text-bloodBright text-lg"></i>
+        <span class="text-xs font-bold uppercase tracking-wider text-zinc-200">Cronograma Oficial del Infierno</span>
+      </div>
+      <div>
+        <button 
+          id="copyScheduleBtn" 
+          class="grunge-btn bg-blood hover:bg-red-700 border border-red-500 text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center gap-2 shadow"
+        >
+          <i class="fa-solid fa-copy"></i> Copiar Texto para Redes
+        </button>
+      </div>
+    </div>
+
+    <!-- SCHEDULE LIST -->
+    <div id="scheduleContainer" class="flex flex-col gap-3">
+      
+      <!-- ITEM 1 -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-blood w-8 text-center">#1</span>
+          <div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-flyerInk text-white">19:00 - 19:30</span>
+            <h3 class="font-metal text-2xl text-flyerInk tracking-wide mt-1">SET BACK</h3>
+          </div>
+        </div>
+        <div class="text-right text-zinc-600">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-drum text-lg mt-1 text-zinc-700"></i>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-blood w-8 text-center">#2</span>
+          <div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-flyerInk text-white">19:30 - 20:00</span>
+            <h3 class="font-metal text-2xl text-flyerInk tracking-wide mt-1">BREAKING THE SHADOWS</h3>
+          </div>
+        </div>
+        <div class="text-right text-zinc-600">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-guitar text-lg mt-1 text-zinc-700"></i>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-blood w-8 text-center">#3</span>
+          <div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-flyerInk text-white">20:00 - 20:30</span>
+            <h3 class="font-metal text-2xl text-flyerInk tracking-wide mt-1">NECROSEMEN</h3>
+          </div>
+        </div>
+        <div class="text-right text-zinc-600">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-skull text-lg mt-1 text-zinc-700"></i>
+        </div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-blood w-8 text-center">#4</span>
+          <div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-flyerInk text-white">20:30 - 21:00</span>
+            <h3 class="font-metal text-2xl text-flyerInk tracking-wide mt-1">PARTES DE PERRO</h3>
+          </div>
+        </div>
+        <div class="text-right text-zinc-600">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-dog text-lg mt-1 text-zinc-700"></i>
+        </div>
+      </div>
+
+      <!-- EVENTO ESPECIAL: SORTEO -->
+      <div class="time-slot-card time-slot-special p-4 rounded-2xl flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-4">
+          <div class="w-8 text-center text-blood text-xl">
+            <i class="fa-solid fa-fire animate-bounce"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-extrabold px-2 py-0.5 rounded bg-blood text-white">21:00 - 21:20</span>
+              <span class="text-[11px] font-bold text-blood uppercase tracking-wider">🔥 ¡Pilas ahí!</span>
+            </div>
+            <h3 class="font-metal text-2xl text-blood tracking-wide mt-1">SORTEO DE TATUAJES</h3>
+          </div>
+        </div>
+        <div class="text-right text-blood">
+          <span class="text-[11px] font-bold block">20 MIN</span>
+          <i class="fa-solid fa-wand-magic-sparkles text-lg mt-1"></i>
+        </div>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-blood w-8 text-center">#5</span>
+          <div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-flyerInk text-white">21:20 - 21:50</span>
+            <h3 class="font-metal text-2xl text-flyerInk tracking-wide mt-1">NEIMLESS</h3>
+          </div>
+        </div>
+        <div class="text-right text-zinc-600">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-ghost text-lg mt-1 text-zinc-700"></i>
+        </div>
+      </div>
+
+      <!-- ITEM 6 -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-blood w-8 text-center">#6</span>
+          <div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-flyerInk text-white">21:50 - 22:20</span>
+            <h3 class="font-metal text-2xl text-flyerInk tracking-wide mt-1">ÁCIDO PARA LOS NIÑOS</h3>
+          </div>
+        </div>
+        <div class="text-right text-zinc-600">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-flask text-lg mt-1 text-zinc-700"></i>
+        </div>
+      </div>
+
+      <!-- ITEM 7 -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-blood w-8 text-center">#7</span>
+          <div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-flyerInk text-white">22:20 - 22:50</span>
+            <h3 class="font-metal text-2xl text-flyerInk tracking-wide mt-1">POBRE GENTE</h3>
+          </div>
+        </div>
+        <div class="text-right text-zinc-600">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-users text-lg mt-1 text-zinc-700"></i>
+        </div>
+      </div>
+
+      <!-- ITEM 8 -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-sm">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-blood w-8 text-center">#8</span>
+          <div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-flyerInk text-white">22:50 - 23:20</span>
+            <h3 class="font-metal text-2xl text-flyerInk tracking-wide mt-1">EXCORAITOR</h3>
+          </div>
+        </div>
+        <div class="text-right text-zinc-600">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-cross text-lg mt-1 text-zinc-700"></i>
+        </div>
+      </div>
+
+      <!-- ITEM 9: CIERRE -->
+      <div class="time-slot-card p-4 rounded-2xl flex items-center justify-between shadow-md border-2 border-blood bg-[#251515]">
+        <div class="flex items-center gap-4">
+          <span class="font-metal text-2xl text-bloodBright w-8 text-center">#9</span>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-blood text-white">23:20 - 23:50</span>
+              <span class="text-[10px] font-bold text-red-400 uppercase tracking-widest">💀 Cierra el infierno</span>
+            </div>
+            <h3 class="font-metal text-3xl text-amber-300 tracking-wide mt-1">BLAST</h3>
+          </div>
+        </div>
+        <div class="text-right text-amber-400">
+          <span class="text-[11px] font-bold block">30 MIN</span>
+          <i class="fa-solid fa-bolt text-xl mt-1 animate-pulse"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER INFO & MAP -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+      <div class="bg-[#1f1f23] text-zinc-200 p-4 rounded-2xl border-2 border-flyerInk flex items-start gap-3 shadow">
+        <i class="fa-solid fa-location-dot text-bloodBright text-xl mt-0.5"></i>
+        <div>
+          <h4 class="font-bold uppercase text-white">Ubicación</h4>
+          <p class="text-zinc-300 font-semibold">EL RELAJO DEL TAYTA</p>
+          <p class="text-zinc-400 text-[11px]">Leoncio Prado y Pedro Gálvez • Pío Pata - Huancayo</p>
+        </div>
+      </div>
+
+      <div class="bg-[#1f1f23] text-zinc-200 p-4 rounded-2xl border-2 border-flyerInk flex items-start gap-3 shadow">
+        <i class="fa-solid fa-ticket text-bloodBright text-xl mt-0.5"></i>
+        <div>
+          <h4 class="font-bold uppercase text-white">Entrada</h4>
+          <p class="text-amber-300 font-bold">GRATIS con disfraz hasta las 8:00 P.M.</p>
+          <p class="text-zinc-400 text-[11px]">Después S/5 • Tattoo Live: Gehenart & Morrigan</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAPS SECTION -->
+    <div class="mt-6 bg-[#1f1f23] p-4 rounded-2xl border-2 border-flyerInk shadow-lg">
+      <h4 class="font-bold uppercase text-white text-xs mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-map-location-dot text-bloodBright"></i> Mapa de Ubicación - El Relajo del Tayta
+      </h4>
+      <div class="w-full h-[350px] rounded-xl overflow-hidden border border-zinc-700">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d820.2354682718229!2d-75.2312908307321!3d-12.06281606837801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910e9751b0e4e2dd%3A0x86345cf22b255951!2sEl%20relajo%20del%20Tayta!5e0!3m2!1ses!2spe!4v1792464002502!5m2!1ses!2spe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+
+    <!-- FINAL PHRASE -->
+    <div class="mt-6 text-center text-zinc-700 font-metal text-lg tracking-widest uppercase">
+      Llega temprano, el pogo empieza con la primera. ¡Nos vemos en el escenario! 💀🎸
+    </div>
+
+  </main>
+
+  <script>
+    const RAW_TEXT = `✦ PÍO PATA INFERNAL - ORDEN DE PRESENTACIÓN ✦
+
+Arrancamos puntual a las 19:00 - 30 min por banda y sorteo en medio.
+
+19:00 - 19:30 #1: SET BACK
+19:30 - 20:00 #2: BREAKING THE SHADOWS
+20:00 - 20:30 #3: NECROSEMEN
+20:30 - 21:00 #4: PARTES DE PERRO
+
+21:00 - 21:20 // SORTEO DE TATUAJES 🔥 ¡Pilas ahí!
+
+21:20 - 21:50 #5: NEIMLESS
+21:50 - 22:20 #6: ÁCIDO PARA LOS NIÑOS
+22:20 - 22:50 #7: POBRE GENTE
+22:50 - 23:20 #8: EXCORAITOR
+23:20 - 23:50 #9: BLAST - Cierra el infierno
+
+Llega temprano, el pogo empieza con la primera.
+¡Nos vemos en el escenario! 💀🎸`;
+
+    document.getElementById('copyScheduleBtn').addEventListener('click', () => {
+      const textarea = document.createElement('textarea');
+      textarea.value = RAW_TEXT;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        alert("¡Texto de horarios copiado al portapapeles!");
+      } catch (e) {
+        alert("No se pudo copiar automáticamente.");
+      }
+      document.body.removeChild(textarea);
+    });
+  </script>
+</body>
+</html>
